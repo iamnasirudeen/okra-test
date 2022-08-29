@@ -10,5 +10,17 @@ export class AccountsService {
     private readonly accountsModel: Model<AccountsDocument>,
   ) {}
 
-  createAccount() {}
+  async createAccount(customerId, accounts: Array<any>) {
+    accounts.map(async (account) => {
+      await this.accountsModel.updateOne(
+        { ...account, customerId },
+        { ...account, customerId },
+        { upsert: true },
+      );
+    });
+  }
+
+  async findByAccountType(accountType: string) {
+    return await this.accountsModel.findOne({ accountType });
+  }
 }

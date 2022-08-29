@@ -18,11 +18,14 @@ export type AccountsDocument = Accounts & Document;
   },
 })
 export class Accounts {
-  @Prop({ type: MSchema.Types.ObjectId, ref: 'Auth' })
-  authId: Types.ObjectId;
+  @Prop({ type: MSchema.Types.ObjectId, ref: 'Customers' })
+  customerId: Types.ObjectId;
 
   @Prop({ type: String, required: true })
   accountTitle: string;
+
+  @Prop({ type: String })
+  currency: string;
 
   @Prop({ type: String, required: true, enum: EAccountTypes })
   accountType: 'SAVINGS' | 'CREDIT_CARD';

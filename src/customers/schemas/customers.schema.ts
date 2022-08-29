@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schame as MSchema, Types } from 'mongoose';
+import { Document, Schema as MSchema, Types } from 'mongoose';
 
 export type CustomersDocument = Customers & Document;
 
@@ -25,8 +25,8 @@ export class Customers {
   @Prop({ type: String, required: true })
   address: string;
 
-  @Prop({ type: Number, required: true, min: 11, max: 11 })
-  BVN: number;
+  @Prop({ type: Number, required: true })
+  bvn: number;
 
   @Prop({ type: Number, required: true })
   phone: number;

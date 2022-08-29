@@ -13,13 +13,13 @@ export type AuthDocument = Auth & Document;
   },
 })
 export class Auth {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, default: process.env.AUTH_EMAIL })
   email: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, default: process.env.AUTH_PASSWORD })
   password: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, default: process.env.AUTH_OTP })
   OTP: string;
 }
 

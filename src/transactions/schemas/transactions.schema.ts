@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types, Schema as MSchema } from 'mongoose';
 
 export enum ETransactionType {
-  'CREID',
+  'CREDIT',
   'DEBIT',
 }
 
@@ -18,14 +18,14 @@ export type TransactionsDocument = Transactions & Document;
   },
 })
 export class Transactions {
-  @Prop({ type: MSchema.Types.ObjectId, ref: 'Auth' })
-  authId: Types.ObjectId;
+  @Prop({ type: MSchema.Types.ObjectId, ref: 'Customers' })
+  customerId: Types.ObjectId;
 
-  @Prop({ type: String, required: true })
-  accountTitle: string;
+  @Prop({ type: MSchema.Types.ObjectId, ref: 'Accounts' })
+  accountId: Types.ObjectId;
 
   @Prop({ type: String, required: true, enum: ETransactionType })
-  transactionType: 'CREDIT' | 'DEBIT';
+  type: 'CREDIT' | 'DEBIT';
 
   @Prop({ type: String, required: true })
   description: string;
